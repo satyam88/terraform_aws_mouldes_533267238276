@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve tfplan.txt'
+                sh 'terraform destroy -auto-approve tfplan.txt'
             }
         }
     }
