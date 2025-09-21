@@ -22,17 +22,17 @@ pipeline {
         }
         stage('Terraform Format') {
             steps {
-                sh 'terraform fmt -check -recursive'
+                sh 'terraform fmt -check -recursive dev/'
             }
         }
         stage('Terraform Init') {
             steps {
-                sh 'terraform init'
+                sh 'terraform init dev/'
             }
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -var-file=terraform.tfvars -out=tfplan.txt'
+                sh 'terraform plan -var-file=dev/terraform.tfvars -out=dev/tfplan.txt dev/'
             }
         }
         stage('Approval') {
@@ -41,7 +41,7 @@ pipeline {
             }
             steps {
                 script {
-                    def plan = readFile 'tfplan.txt'
+                    def plan = readFile 'dev/tfplan.txt'
                     input message: "Do you want to apply the plan?",
                           parameters: [text(name: 'Plan', description: 'Please review the plan', defaultValue: plan)]
                 }
@@ -49,7 +49,7 @@ pipeline {
         }
         stage('Terraform Apply') {
             steps {
-                sh 'terraform apply -auto-approve tfplan.txt'
+                sh 'terraform apply -auto-approve dev/tfplan.txt'
             }
         }
     }
