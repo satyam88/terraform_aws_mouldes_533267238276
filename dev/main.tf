@@ -20,26 +20,7 @@ module "mysql_db" {
 }
 
 
-module "bucket1" {
-  source      = "git::https://github.com/satyam88/terraform_aws_mouldes.git//modules/s3?ref=v1.7"
-  bucket_name = "xysuhsgsg65673"
-}
 
-module "bucket2" {
-  source      = "git::https://github.com/satyam88/terraform_aws_mouldes.git//modules/s3?ref=v1.7"
-  bucket_name = "xysuhsgsg65633"
-}
-
-module "bucket3" {
-  source      = "git::https://github.com/satyam88/terraform_aws_mouldes.git//modules/s3?ref=v1.8"
-  bucket_name = "xysuhsgswww65633"
-}
-
-module "bucket4" {
-  source        = "git::https://github.com/satyam88/terraform_aws_mouldes.git//modules/s3?ref=v1.8"
-  bucket_name   = "xysuhsgswww65jj633"
-  bucket_privay = "private"
-}
 
 module "ec2" {
   source        = "git::https://github.com/satyam88/terraform_aws_mouldes.git//modules/ec2?ref=v1.8"
