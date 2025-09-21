@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh 'terraform plan -var-file=terraform.tfvars -out=tfplan.txt'
+                sh 'terraform plan -destroy  -var-file=terraform.tfvars -out=tfplan.txt'
             }
         }
         stage('Approval') {
